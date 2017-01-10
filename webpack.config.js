@@ -27,8 +27,19 @@ var config = {
             'react-hot',
             'babel'
         ]
-      }
+      },
+      {
+        test: /\.css$/,
+        loader:'style!css!'
+      },
+      { 
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        loader: 'url-loader?limit=100000'
+     }
     ]
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
   }
 };
 
