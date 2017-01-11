@@ -9,13 +9,12 @@ let AddCategory = ({ dispatch }) => {
   return (
     <div className="App-main__add-category">
       <form onSubmit={e => {
-        debugger;
-        console.log(store.getState());
+        let id = Date.now();
         e.preventDefault()
         if (!input.value.trim()) {
           return
         }
-        dispatch(addCategory(input.value))
+        dispatch(addCategory(input.value, id))
         input.value = ''
         console.log(store.getState());
       }}>
