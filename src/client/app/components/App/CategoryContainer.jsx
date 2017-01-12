@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import CategoryList from './CategoryList';
 import AddCategory from './AddCategory';
 import { connect } from 'react-redux'
-import * as CategoryActions from '../../actions/actions.jsx'
+import * as CategoryActions from '../../actions/category-actions.jsx'
 
 class CategoryContainer extends Component {
     render() {

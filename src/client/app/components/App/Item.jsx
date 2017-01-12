@@ -1,17 +1,41 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 
 class Item extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.toogle = this.toogle.bind(this);
+
+    }
+
+    toogle() {
+        const { item } = this.props;
+        this.props.toogleTodo(item.id);
+    }
+
     render() {
+        debugger;
+        const { item } = this.props;
+        const style = {
+            textDecoration: item.done ? 'line-through': 'none'
+        }
+
         return (
             <li className="App-main__item">
-                <label><input type="checkbox"/><span className="item-name">{this.props.params.name}</span></label>
+                <label><input type="checkbox" onClick={this.toogle} checked={item.done}/><span className="item-name"  style={style}> {item.name}</span></label>
                 <div className="item__button-block">
-                    <Link to="/edit/1" className="edit-button icon" />
+                    <Link to="/edit/1" className="edit-button icon"/>
                 </div>
             </li>
         );
     }
 }
+
+Item.propTypes = {
+    item: PropTypes.object.isRequired,
+    toogleTodo: PropTypes.func.isRequired
+};
 
 export default Item;

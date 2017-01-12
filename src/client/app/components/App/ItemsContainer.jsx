@@ -1,31 +1,43 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import { bindActionCreators } from 'redux'
 import ItemsList from './ItemsList';
 import AddItem from './AddItem';
+import { connect } from 'react-redux'
+import * as TodoActions from '../../actions/todo-actions'
+
 
 class ItemsContainer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            items: [
-                {name: "Cook dinner", id: 1, done: false},
-                {name: "Learn react", id: 2, done: false},
-                {name: "Fix skedooler", id: 3, done: false}
-            ]
-        }
-    }
 
-    toggleActive() {
-        // We should change state in container components :)
-    }
 
     render() {
+        debugger;
+        const { categoryId, todos, actions } = this.props;
+        const array = todos.filter(elem => elem.categoryId === parseInt(categoryId));
+
+
         return (
             <div className="App-main__items">
-                <AddItem></AddItem>
-                <ItemsList items={this.state.items} toogleActive={this.toggleActive}/>
+                <AddItem categoryId={categoryId} {...actions}></AddItem>
+                <ItemsList items={array} categoryId={categoryId} actions={actions}/>
             </div>
         );
     }
 }
 
-export default ItemsContainer;
+ItemsContainer.propTypes = {
+  categoryId: PropTypes.string.isRequired,
+  actions: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  todos: state.todoReducer
+})
+
+const mapDispatchToProps = dispatch => ({
+    actions: bindActionCreators(TodoActions, dispatch)
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ItemsContainer)

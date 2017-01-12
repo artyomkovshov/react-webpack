@@ -1,8 +1,8 @@
 const initialState = [
-                {name: "High priority" , id: 1, parentId: [], select: false, indent: 0},
-                {name: "Medium priority" , id: 2, parentId: [], select: false, indent: 0},
-                {name: "Low priority" , id: 3, parentId: [], select: false, indent: 0},
-                {name: "Sub" , id: 4, parentId: [], select: false, indent: 2},
+                {name: "High priority" , id: 1, parentId: [], select: false, indent: 0, visible: true, collapsed: false},
+                {name: "Medium priority" , id: 2, parentId: [], select: false, indent: 0, visible: true, collapsed: false},
+                {name: "Low priority" , id: 3, parentId: [], select: false, indent: 0, visible: true, collapsed: false},
+                {name: "Sub" , id: 4, parentId: [], select: false, indent: 2, visible: true, collapsed: false},
 ];
 
 
@@ -16,12 +16,13 @@ const category = (state = initialState, action) => {
             parentId: [],
             select: false,
             indent: 0,
-            rootId: null
+            rootId: null,
+            collapsed: false,
+            visible: true
         },
       ...state
       ]
     case 'REMOVE_CATEGORY':
-      debugger;
       return state.filter(category =>
         category.id !== action.id && !category.parentId.includes(action.id)
       )
@@ -37,10 +38,24 @@ const category = (state = initialState, action) => {
               parentId: action.parentId,
               select: false,
               indent: action.indent,
-              rootId: action.rootId
+              rootId: action.rootId,
+              collapsed: false,
+              visible: action.visible
           });
         }      
         return newState;
+      case 'SAVE_CATEGORY':
+        return state.map(category =>
+          category.id === action.id ?
+            { ...category, name: action.name } :
+            category
+        )
+      // case 'TOOGLE_SHOW_CHILD':
+      //   return state.map(category =>
+      //     category.parentId.includes(action.id) ?
+      //       { ...category, visible: !action. } :
+      //       category
+      //   )
     default:
       return state
   }

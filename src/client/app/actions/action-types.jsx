@@ -2,3 +2,9 @@
 export const ADD_CATEGORY = 'ADD_CATEGORY';
 export const DELETE_CATEGORY = 'REMOVE_CATEGORY';
 export const ADD_SUB_CATEGORY = 'ADD_SUB_CATEGORY';
+export const SAVE_CATEGORY = 'SAVE_CATEGORY';
+// export const TOOGLE_SHOW_CHILD = 'TOOGLE_SHOW_CHILD';
+
+// Todos
+export const ADD_TODO = 'ADD_TODO';
+export const TOOGLE_TODO = 'TOOGLE_TODO';

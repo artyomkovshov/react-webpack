@@ -1,18 +1,25 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Item from './Item';
 
 class ItemsList extends Component {
 
     render() {
-        const array = this.props.items.map((elem) => <Item key={elem.id} params={elem} toogleActive={this.props.toogleActive}/>);
-
+        const { items, actions } = this.props;
         return (
 
         <ul className="App-main__items-list">
-            {array}
+            {items.map(elem =>
+                    <Item key={elem.id} item={elem} {...actions}/>
+                )}
         </ul>
         );
     }
 }
+
+ItemsList.propTypes = {
+  categoryId: PropTypes.string.isRequired,
+  items: PropTypes.array.isRequired,
+  actions: PropTypes.object.isRequired
+};
 
 export default ItemsList;

@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addCategory } from '../../actions/actions.jsx'
+import { addCategory } from '../../actions/category-actions'
 import store from '../../store.jsx'
 
 let AddCategory = ({ dispatch }) => {
