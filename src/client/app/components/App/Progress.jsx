@@ -6,8 +6,6 @@ class Progress extends Component {
             <div className="meter">
                 <span ></span>
             </div>
-
-
         );
     }
 }

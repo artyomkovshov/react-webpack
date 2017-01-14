@@ -16,7 +16,6 @@ class Item extends Component {
     }
 
     render() {
-        debugger;
         const { item } = this.props;
         const style = {
             textDecoration: item.done ? 'line-through': 'none'
@@ -24,7 +23,7 @@ class Item extends Component {
 
         return (
             <li className="App-main__item">
-                <label><input type="checkbox" onClick={this.toogle} checked={item.done}/><span className="item-name"  style={style}> {item.name}</span></label>
+                <label><input type="checkbox" onClick={this.toogle} defaultChecked={item.done}/><span className="item-name" style={style}> {item.name}</span></label>
                 <div className="item__button-block">
                     <Link to={"/edit/"+item.id} className="edit-button icon" />
                 </div>

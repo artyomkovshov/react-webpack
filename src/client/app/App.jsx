@@ -6,14 +6,35 @@ import CategoryContainer from './components/App/CategoryContainer';
 
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { isShowActive: false }
+    this.showActive = this.showActive.bind(this);
+    this.showAll = this.showAll.bind(this);
+    this.renderChild = this.renderChild.bind(this);
+
+  }
+
+  showActive() {
+    this.setState({ isShowActive: true });
+  }
+
+  showAll() {
+    this.setState({isShowActive: false});
+  }
+
+  renderChild() {
+    return this.props.children ? React.cloneElement(this.props.children, { isShowActive: this.state.isShowActive }) : this.props.children;
+  }
+
   render() {
-    debugger;
     return (
         <div>
-            <Header/>
+            <Header showActive={this.showActive} showAll={this.showAll}/>
             <Progress></Progress>
             <CategoryContainer></CategoryContainer>
-            {this.props.children}
+            {this.renderChild()}
         </div>
     );
   }

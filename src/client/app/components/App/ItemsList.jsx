@@ -4,12 +4,14 @@ import Item from './Item';
 class ItemsList extends Component {
 
     render() {
-        const { items, actions } = this.props;
+        const { items, actions, isShowActive } = this.props;
+        const filteredItems = !isShowActive ? items.filter(e => e.done === false) : items; 
+
         return (
 
         <ul className="App-main__items-list">
-            {items.map(elem =>
-                    <Item key={elem.id} item={elem} {...actions}/>
+            {filteredItems.map(elem =>
+                    <Item key={elem.id} item={elem} {...actions}/> 
                 )}
         </ul>
         );
@@ -19,7 +21,9 @@ class ItemsList extends Component {
 ItemsList.propTypes = {
   categoryId: PropTypes.string.isRequired,
   items: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  isShowActive: PropTypes.bool.isRequired
 };
+
 
 export default ItemsList;
