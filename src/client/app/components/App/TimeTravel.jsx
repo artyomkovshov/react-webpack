@@ -13,12 +13,10 @@ class TimeTravel extends Component {
         }
         
         undo() {
-            debugger;
             this.props.dispatch(ActionCreators.undo())
         }
 
         redo() {
-            debugger;
             this.props.dispatch(ActionCreators.redo())
         }
 

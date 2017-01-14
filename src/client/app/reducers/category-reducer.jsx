@@ -50,14 +50,12 @@ const category = (state = initialState, action) => {
         }      
         return newState;
       case 'SAVE_CATEGORY':
-        debugger;
         return state.map(category =>
           category.id === action.id ?
             { ...category, name: action.name } :
             category
         )
        case 'SET_DONE':
-        debugger;
         return state.map(category =>
           category.id === action.id ?
             { ...category, done: true } :

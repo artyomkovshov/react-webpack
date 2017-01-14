@@ -31,7 +31,6 @@ class ItemEdit extends Component {
     }
 
     render() {
-        debugger;
         const { categoryId } = this.props;
         const todos = this.props.todos.present;
         const { saveTodo } = this.props.actions;
