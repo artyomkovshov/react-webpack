@@ -3,6 +3,9 @@ import './App.css';
 import Header from './components/App/Header';
 import Progress from './components/App/Progress';
 import CategoryContainer from './components/App/CategoryContainer';
+import TimeTravel from './components/App/TimeTravel';
+import store from './store';
+
 
 
 class App extends Component {
@@ -32,6 +35,7 @@ class App extends Component {
     return (
         <div>
             <Header showActive={this.showActive} showAll={this.showAll}/>
+            <TimeTravel></TimeTravel>
             <Progress></Progress>
             <CategoryContainer></CategoryContainer>
             {this.renderChild()}

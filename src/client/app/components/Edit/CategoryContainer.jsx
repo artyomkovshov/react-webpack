@@ -8,14 +8,14 @@ class CategoryContainer extends Component {
     render() {
         return (
             <div className="App-main__category">
-                <CategoryList categories={this.props.categories} actions={this.props.actions} setCategory={this.props.setCategory}/>
+                <CategoryList categories={this.props.categories.present} actions={this.props.actions} setCategory={this.props.setCategory}/>
             </div>
         );
     }
 }
 
 CategoryContainer.propTypes = {
-  categories: PropTypes.array.isRequired,
+  categories: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
   setCategory: PropTypes.func.isRequired
 };

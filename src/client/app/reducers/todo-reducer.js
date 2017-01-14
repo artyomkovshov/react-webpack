@@ -1,4 +1,5 @@
 import { List, Record } from 'immutable';
+import undoable from 'redux-undo';
 
 const initialState = [
                 {name: "Cook dinner", id: 1, done: false, categoryId: 1, description: "123"},
@@ -43,4 +44,6 @@ const todo = (state = initialState, action) => {
   }
 }
 
-export default todo
+const undoableTodo = undoable(todo)
+
+export default undoableTodo

@@ -120,7 +120,7 @@ class Category extends Component {
                     autoComplete="off"
                     autoFocus
                     className="category-name__input"
-                    defaultValue={category.title + ' - sub'}
+                    defaultValue={category.name + ' - sub'}
                     maxLength="32"
                     onBlur={this.saveSub}
                     onKeyUp={this.onKeyUp}

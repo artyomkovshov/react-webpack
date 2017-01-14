@@ -23,7 +23,7 @@ class Item extends Component {
 
         return (
             <li className="App-main__item">
-                <label><input type="checkbox" onClick={this.toogle} defaultChecked={item.done}/><span className="item-name" style={style}> {item.name}</span></label>
+                <label><input type="checkbox" onClick={this.toogle} defaultChecked={item.done} className="disabled"/><span className="item-name" style={style}> {item.name}</span></label>
                 <div className="item__button-block">
                     <Link to={"/edit/"+item.id} className="edit-button icon" />
                 </div>

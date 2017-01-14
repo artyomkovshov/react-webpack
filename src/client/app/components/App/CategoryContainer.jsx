@@ -10,14 +10,14 @@ class CategoryContainer extends Component {
         return (
             <div className="App-main__category">
                 <AddCategory></AddCategory>
-                <CategoryList categories={this.props.categories} actions={this.props.actions}/>
+                <CategoryList categories={this.props.categories.present} actions={this.props.actions}/>
             </div>
         );
     }
 }
 
 CategoryContainer.propTypes = {
-  categories: PropTypes.array.isRequired,
+  categories: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired
 };
 

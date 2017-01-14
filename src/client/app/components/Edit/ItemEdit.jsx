@@ -16,23 +16,24 @@ class ItemEdit extends Component {
     }
 
     save() {
-        debugger;
-        const { todos, categoryId } = this.props;
+        let { categoryId } = this.props;
+        const todos = this.props.todos.present;
         const itemId = parseInt(this.props.itemId);
         const item = todos.find(item => item.id === itemId);
-        const sed = categoryId || item.categoryId;
+        categoryId = categoryId || item.categoryId;
 
         const name = this.refs.name.value;
         const done = this.refs.isDone.checked;
         const description = this.refs.desc.value;
 
-        this.props.actions.saveTodo(item.id, name, sed, done, description);
+        this.props.actions.saveTodo(item.id, name, categoryId, done, description);
         browserHistory.push('/categories/'+categoryId);
     }
 
     render() {
         debugger;
-        const { todos, categoryId } = this.props;
+        const { categoryId } = this.props;
+        const todos = this.props.todos.present;
         const { saveTodo } = this.props.actions;
         const itemId = parseInt(this.props.itemId);
         const item = todos.find(item => item.id === itemId);

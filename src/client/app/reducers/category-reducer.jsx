@@ -1,3 +1,6 @@
+import undoable from 'redux-undo';
+
+
 const initialState = [
                 {name: "High priority" , id: 1, parentId: [], select: false, indent: 0, visible: true, collapsed: false, done: false},
                 {name: "Medium priority" , id: 2, parentId: [], select: false, indent: 0, visible: true, collapsed: false, done: false},
@@ -77,4 +80,7 @@ const category = (state = initialState, action) => {
   }
 }
 
-export default category
+const undoableCategory = undoable(category)
+
+
+export default undoableCategory

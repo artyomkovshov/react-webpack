@@ -10,8 +10,9 @@ import * as CategoryActions from '../../actions/category-actions';
 class ItemsContainer extends Component {
 
     componentDidUpdate(prevProps, prevState) {
-        debugger;
-        const { todos, categoryActions } = this.props;
+
+        const { categoryActions } = this.props;
+        const todos = this.props.todos.present;
         const { categoryId } = this.props.params;
 
         const undoned = todos.filter(elem => elem.categoryId === parseInt(categoryId) && !elem.done);
@@ -27,7 +28,8 @@ class ItemsContainer extends Component {
 
     render() {
         const filter = this.props.location.query.filter ? this.props.location.query.filter : '';
-        const { todos, actions } = this.props;
+        const { actions } = this.props;
+        const todos = this.props.todos.present;
         const { categoryId } = this.props.params;
         const array = todos.filter(elem => elem.categoryId === parseInt(categoryId) && elem.name.includes(filter));
 
