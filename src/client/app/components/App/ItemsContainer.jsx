@@ -11,7 +11,8 @@ class ItemsContainer extends Component {
 
     render() {
         debugger;
-        const { categoryId, todos, actions } = this.props;
+        const { todos, actions } = this.props;
+        const { categoryId } = this.props.params;
         const array = todos.filter(elem => elem.categoryId === parseInt(categoryId));
 
 
@@ -25,8 +26,8 @@ class ItemsContainer extends Component {
 }
 
 ItemsContainer.propTypes = {
-  categoryId: PropTypes.string.isRequired,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  params: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({

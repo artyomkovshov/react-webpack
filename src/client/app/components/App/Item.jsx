@@ -26,7 +26,7 @@ class Item extends Component {
             <li className="App-main__item">
                 <label><input type="checkbox" onClick={this.toogle} checked={item.done}/><span className="item-name"  style={style}> {item.name}</span></label>
                 <div className="item__button-block">
-                    <Link to="/edit/1" className="edit-button icon"/>
+                    <Link to={"/edit/"+item.id} className="edit-button icon" />
                 </div>
             </li>
         );

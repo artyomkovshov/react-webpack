@@ -42,17 +42,15 @@
 }
 
 .App-main__category {
-  display: flex;
+  display: inline-block;
   margin: 2em 2em;
   width: 30%;
-  flex-direction: column;
 }
 
 .App-main__items {
-  position: relative;
-  display: flex;
   margin: 2em 2em;
   width: 60%;
+  float: right;
 }
 
 .App-main__items-list {
@@ -163,8 +161,8 @@
 }
 
 .Edit-main__items {
-  display: flex;
-  flex-direction: column;
+  float: right;
+  width: 50%;
 }
 
 .Edit-main__header-input {
@@ -175,11 +173,6 @@
 .Edit-main__text-input {
   margin: 1em 0;
   width: 70%;
-}
-
-.App-main__wrapper {
-  display: flex;
-  flex-direction: row;
 }
 
 .icon {

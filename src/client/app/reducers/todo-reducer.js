@@ -1,10 +1,10 @@
 import { List, Record } from 'immutable';
 
 const initialState = [
-                {name: "Cook dinner", id: 1, done: false, categoryId: 1},
-                {name: "Learn react", id: 2, done: false, categoryId: 1},
-                {name: "Fix skedooler", id: 3, done: false, categoryId: 1},
-                {name: "Sleep", id: 4, done: false, categoryId: 2},
+                {name: "Cook dinner", id: 1, done: false, categoryId: 1, description: "123"},
+                {name: "Learn react", id: 2, done: false, categoryId: 1, description: "123"},
+                {name: "Fix skedooler", id: 3, done: false, categoryId: 1, description: "123"},
+                {name: "Sleep", id: 4, done: false, categoryId: 2, description: "123"},
 
 ];
 
@@ -18,6 +18,7 @@ const todo = (state = initialState, action) => {
             id: action.id,
             categoryId: action.categoryId,
             done: false,
+            description: ""
         },
       ...state
       ]
