@@ -10,7 +10,7 @@ class Edit extends Component {
         this.state = {
             categoryId: null
         }
-
+        
         this.setCategory = this.setCategory.bind(this);
     }
 

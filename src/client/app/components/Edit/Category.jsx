@@ -9,21 +9,28 @@ class Category extends Component {
 
     constructor(props, context) {
         super(props);
+
+        this.setCategory = this.setCategory.bind(this);
     }
 
-       renderCategory(category) {
+    setCategory() {
+        const { category } = this.props;
+        this.props.setCategory(category.id);
+    }
+
+    renderCategory(category) {
         return (
             <div>
                 <label><span className="category-name">{category.name}</span></label>
                 <div className="item__button-block">
-                    <input type="button" className="item__button revert-button icon" />
+                    <input type="button" className="item__button revert-button icon" onClick={this.setCategory}/>
                 </div>
 
         </div>
         )
     }
 
-        render() {
+    render() {
 
         const { category } = this.props;
 
@@ -44,6 +51,8 @@ class Category extends Component {
 }
 
 Category.propTypes = {
+      setCategory: PropTypes.func.isRequired,
+      category: PropTypes.object.isRequired
 };
 
 export default Category;

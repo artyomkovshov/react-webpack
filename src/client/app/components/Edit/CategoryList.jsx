@@ -7,12 +7,10 @@ class CategoryList extends Component {
     render() {
         const { categories, actions } = this.props;
 
-        //const array = categories.map((elem) => <Category  key={elem.id} category={elem} {...actions}/>);
-
         return (
             <ul className="App-main__category-list">
                 {categories.map(elem =>
-                    <Category key={elem.id} category={elem} {...actions}/>
+                    <Category key={elem.id} category={elem} {...actions} setCategory={this.props.setCategory}/>
                 )}
             </ul>
         );
@@ -21,7 +19,8 @@ class CategoryList extends Component {
 
 CategoryList.propTypes = {
   categories: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  setCategory: PropTypes.func.isRequired
 };
 
 export default CategoryList;

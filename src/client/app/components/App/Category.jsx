@@ -23,6 +23,7 @@ class Category extends Component {
     }
 
     delete() {
+        debugger;
         this.props.deleteCategory(this.props.category.id);
     }
 

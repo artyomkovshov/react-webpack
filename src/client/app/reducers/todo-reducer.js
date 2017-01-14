@@ -29,6 +29,15 @@ const todo = (state = initialState, action) => {
             { ...item, done: !item.done } :
             item
         )
+
+    case 'SAVE_TODO':
+        debugger;
+        return state.map(item =>
+          item.id === action.id ?
+            { ...item, id: action.id, name: action.name, done: action.done, categoryId: action.categoryId, description: action.description } :
+            item
+        )
+
     default:
       return state
   }

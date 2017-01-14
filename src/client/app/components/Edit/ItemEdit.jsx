@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import * as TodoActions from '../../actions/todo-actions';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
+import { browserHistory } from 'react-router';
+
 
 
 
@@ -14,7 +16,18 @@ class ItemEdit extends Component {
     }
 
     save() {
+        debugger;
+        const { todos, categoryId } = this.props;
+        const itemId = parseInt(this.props.itemId);
+        const item = todos.find(item => item.id === itemId);
+        const sed = categoryId || item.categoryId;
 
+        const name = this.refs.name.value;
+        const done = this.refs.isDone.checked;
+        const description = this.refs.desc.value;
+
+        this.props.actions.saveTodo(item.id, name, sed, done, description);
+        browserHistory.push('/categories/'+categoryId);
     }
 
     render() {
@@ -27,8 +40,8 @@ class ItemEdit extends Component {
         return (
                 <form className="Edit-main__items">
                     <div className="items__button-block">
-                        <input type="submit" value={"Save Changes"} className="item__button button" />
-                        <Link to={"/"} className="item__button button" onClick={this.save}>Cancel</Link>
+                        <input type="button" value={"Save Changes"} className="item__button button"  onClick={this.save}/>
+                        <Link to={"/"} className="item__button button">Cancel</Link>
                     </div>
                     <input type="text" placeholder="Header" className="Edit-main__header-input" defaultValue={item.name} ref="name"/>
                     <label><input type="checkbox" ref="isDone"/><span>Done</span></label>

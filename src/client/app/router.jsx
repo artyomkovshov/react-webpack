@@ -4,10 +4,11 @@ import App from './App';
 import Edit from './Edit';
 import ItemsContainer from './components/App/ItemsContainer';
 import './index.css';
-import { Router, Route, hashHistory } from 'react-router';
+import { Router, Route, browserHistory } from 'react-router';
+
 
 export default (
-  <Router history={hashHistory}>
+  <Router history={browserHistory}>
         <Route path="/" component={App}>
             <Route path="/categories/:categoryId" component={ItemsContainer}/>
         </Route>
