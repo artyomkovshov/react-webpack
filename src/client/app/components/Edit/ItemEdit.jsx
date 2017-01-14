@@ -18,7 +18,8 @@ class ItemEdit extends Component {
     }
 
     render() {
-        const { todos } = this.props;
+        debugger;
+        const { todos, categoryId } = this.props;
         const { saveTodo } = this.props.actions;
         const itemId = parseInt(this.props.itemId);
         const item = todos.find(item => item.id === itemId);
@@ -31,6 +32,7 @@ class ItemEdit extends Component {
                     </div>
                     <input type="text" placeholder="Header" className="Edit-main__header-input" defaultValue={item.name} ref="name"/>
                     <label><input type="checkbox" ref="isDone"/><span>Done</span></label>
+                    <div>Category - {categoryId || item.categoryId}</div>
                     <textarea placeholder="Description" className="Edit-main__text-input" rows="30" cols="160" defaultValue={item.description} ref="desc"></textarea>
                 </form>
 
@@ -39,7 +41,7 @@ class ItemEdit extends Component {
 }
 
 ItemEdit.propTypes = {
-  itemId: PropTypes.string.isRequired
+  itemId: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({
