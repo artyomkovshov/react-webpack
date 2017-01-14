@@ -1,8 +1,8 @@
 const initialState = [
-                {name: "High priority" , id: 1, parentId: [], select: false, indent: 0, visible: true, collapsed: false},
-                {name: "Medium priority" , id: 2, parentId: [], select: false, indent: 0, visible: true, collapsed: false},
-                {name: "Low priority" , id: 3, parentId: [], select: false, indent: 0, visible: true, collapsed: false},
-                {name: "Sub" , id: 4, parentId: [], select: false, indent: 2, visible: true, collapsed: false},
+                {name: "High priority" , id: 1, parentId: [], select: false, indent: 0, visible: true, collapsed: false, done: false},
+                {name: "Medium priority" , id: 2, parentId: [], select: false, indent: 0, visible: true, collapsed: false, done: false},
+                {name: "Low priority" , id: 3, parentId: [], select: false, indent: 0, visible: true, collapsed: false, done: false},
+                {name: "Sub" , id: 4, parentId: [], select: false, indent: 2, visible: true, collapsed: false, done: false},
 ];
 
 
@@ -18,7 +18,8 @@ const category = (state = initialState, action) => {
             indent: 0,
             rootId: null,
             collapsed: false,
-            visible: true
+            visible: true,
+            done: false
         },
       ...state
       ]
@@ -40,16 +41,31 @@ const category = (state = initialState, action) => {
               indent: action.indent,
               rootId: action.rootId,
               collapsed: false,
-              visible: action.visible
+              visible: action.visible,
+              done: false
           });
         }      
         return newState;
       case 'SAVE_CATEGORY':
+        debugger;
         return state.map(category =>
           category.id === action.id ?
             { ...category, name: action.name } :
             category
         )
+       case 'SET_DONE':
+        debugger;
+        return state.map(category =>
+          category.id === action.id ?
+            { ...category, done: true } :
+            category
+        )
+        case 'SET_UNDONE':
+        return state.map(category =>
+          category.id === action.id ?
+            { ...category, done: false } :
+            category
+        )  
       // case 'TOOGLE_SHOW_CHILD':
       //   return state.map(category =>
       //     category.parentId.includes(action.id) ?

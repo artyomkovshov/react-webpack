@@ -2,13 +2,30 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux'
 import ItemsList from './ItemsList';
 import AddItem from './AddItem';
-import { connect } from 'react-redux'
-import * as TodoActions from '../../actions/todo-actions'
+import { connect } from 'react-redux';
+import * as TodoActions from '../../actions/todo-actions';
+import * as CategoryActions from '../../actions/category-actions';
 
 
 class ItemsContainer extends Component {
-    render() {
+
+    componentDidUpdate(prevProps, prevState) {
         debugger;
+        const { todos, categoryActions } = this.props;
+        const { categoryId } = this.props.params;
+
+        const undoned = todos.filter(elem => elem.categoryId === parseInt(categoryId) && !elem.done);
+        const doned = todos.filter(elem => elem.categoryId === parseInt(categoryId));
+        if (undoned.length === 0 && doned.length > 0) {
+            categoryActions.setDone(parseInt(categoryId));
+        } else {
+            categoryActions.setUndone(parseInt(categoryId));
+        }
+
+
+    }
+
+    render() {
         const filter = this.props.location.query.filter ? this.props.location.query.filter : '';
         const { todos, actions } = this.props;
         const { categoryId } = this.props.params;
@@ -35,7 +52,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators(TodoActions, dispatch)
+    actions: bindActionCreators(TodoActions, dispatch),
+    categoryActions: bindActionCreators(CategoryActions, dispatch)
 })
 
 export default connect(

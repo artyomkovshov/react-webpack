@@ -13,7 +13,7 @@ class App extends Component {
     this.showActive = this.showActive.bind(this);
     this.showAll = this.showAll.bind(this);
     this.renderChild = this.renderChild.bind(this);
-
+    this.state.isShowActive = true;
   }
 
   showActive() {
